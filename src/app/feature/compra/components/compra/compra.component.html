@@ -1,0 +1,71 @@
+<div class="container">
+    <div class="row text-md-center">
+        <div class="col-12 mb-3">
+            <div class="my-3 row">
+                <div class="col-12 col-md-10 col-lg-11 text-center">
+                    <button type="button" name="crear" [routerLink]="['/compra/gestionar']"
+                        class="btn btn-primary btn-lg">Crear compra</button>
+                </div>
+                <div class="col-12 col-md-2 col-lg-1 text-right">
+                    <button type="button" name="volver" [routerLink]="['/administracion']"
+                        class="btn btn-primary btn-lg"> Regresar
+                   </button>
+                </div>
+            </div>
+            <router-outlet></router-outlet>
+            <div class="card border-dark">
+                <div class="card-body table-responsive">
+                    <div *ngIf="compras?.length == 0" class="alert alert-info my-3">
+                        No hay registros en la base de datos
+                    </div>
+                    <table class="table table-bodered table-striped my-3" *ngIf="compras?.length > 0">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombres</th>
+                                <th>Apellidos</th>
+                                <th>Identificación</th>
+                                <th>Email</th>
+                                <th>Fecha de la Compra</th>
+                                <th>Fecha de Entrega</th>
+                                <th>Valor</th>
+                                <th>Estado</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let compra of compras | slice: (page-1) * pageSize : page * pageSize">
+                                <td>{{compra.id}}</td>
+                                <td>{{compra.idCliente.nombres}}</td>
+                                <td>{{compra.idCliente.apellidos}}</td>
+                                <td>{{compra.idCliente.identificacion}}</td>
+                                <td>{{compra.idCliente.email}}</td>
+                                <td>{{compra.fechaCompra | date:"MMM d, y"}}</td>  
+                                <td>{{compra.fechaEntrega | date:"MMM d, y"}}</td>                              
+                                <td>{{compra.total}}</td>
+                                <td>{{compra.estadoCompra}}</td>
+
+                                <td>
+                                    <button type="button" name="editar" class="btn btn-primary btn-sm"
+                                        [routerLink]="['/compra/gestionar', compra.id]">Editar</button>
+                                </td>
+                                <td>
+                                    <button type="button" name="eliminar" (click)="delete(compra)"
+                                        class="btn btn-danger btn-sm">Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="justify-content-center">
+                        <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="compras?.length"
+                            [maxSize]="1" style="text-align: center;">
+                            <ng-template ngbPaginationPrevious>Siguiente</ng-template>
+                            <ng-template ngbPaginationNext>Atrás</ng-template>
+                        </ngb-pagination>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

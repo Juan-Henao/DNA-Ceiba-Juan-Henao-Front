@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="card border-dark" style="margin-bottom: 2%; margin-top: 0.5%;">
+        <div class="card-header bg-dark text-white" style="text-align: center; font-weight: bold;">
+            {{titulo}}
+            <button class="btn btn-primary float-right" [routerLink]="['/compra']">Cerrar</button>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="compraForm" (ngSubmit)="crud()">
+                <div class="form-group">
+                    <div class="input-group">
+                        <label for="total" class="col-form-label col-sm-3">Total:</label>
+                        <input type="number" id="total" validar formControlName="total" name="total">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <label for="estadoCompra" class="col-form-label col-sm-3">Estado de la Compra:</label>
+                        <div class="ng-autocomplete width-autocomplete">
+                            <ng-autocomplete id="estadoCompra" name="estadoCompra" validar
+                                formControlName="estadoCompra" required [data]="parametros"
+                                [searchKeyword]="atributoAutocompleteParams"  (selected)='seleccionarEstadoCompra($event)'
+                                [itemTemplate]="ParamTemplate" [notFoundTemplate]="notFoundTemplate"></ng-autocomplete>
+
+                            <ng-template #ParamTemplate let-param>
+                                <a [innerHTML]="  param.enumParametro    "></a>
+                            </ng-template>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <label for="fechaCreacion" class="col-form-label col-sm-3">Fecha Creación:</label>
+                        <input type="text" id="fechaCreacion" validar formControlName="fechaCreacion"
+                            name="fechaCreacion">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <label for="fechaEntrega" class="col-form-label col-sm-3">Fecha Entrega:</label>
+                        <input type="text" id="fechaEntrega" validar formControlName="fechaEntrega" name="fechaEntrega">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <label for="cliente" class="col-form-label col-sm-3">Cliente:</label>
+                        <div class="ng-autocomplete width-autocomplete">
+                            <ng-autocomplete id="cliente" name="cliente" validar formControlName="cliente" required
+                                [data]="cliente" [searchKeyword]="atributoAutocomplete" (selected)='seleccionarCliente($event)' [itemTemplate]="itemTemplate"
+                                [notFoundTemplate]="notFoundTemplate" placeholder="Seleccione Cliente">
+                            </ng-autocomplete>
+
+                            <ng-template #itemTemplate let-item>
+                                <a
+                                    [innerHTML]=" 'Nombre ' + item.nombres +  ' ' + item.apellidos + ' Identificacion : ' +item.identificacion "></a>
+                            </ng-template>
+
+                            <ng-template #notFoundTemplate let-notFound>
+                                <div [innerHTML]="notFound"></div>
+                            </ng-template>
+
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary" (click)="onCrearClick()"
+                        *ngIf="!compra.id else elseBlock" [disabled]="!compraForm.valid" role="button">Crear</button>
+                    <ng-template #elseBlock>
+                        <button type="submit" class="btn btn-primary" (click)="onEditarClick()"
+                            [disabled]="!compraForm.valid" role="button">Editar</button>
+                    </ng-template>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

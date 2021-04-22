@@ -1,0 +1,45 @@
+<section class="home py-4">
+    <div class="container">
+        <div class="row text-md-center">
+            <div class="col-12 col-md-12 col-lg-12 text-left mb-3">
+                <button type="button" name="volver" [routerLink]="['/home']" class="btn btn-primary btn-lg">
+                    <img src="assets/img/back.png"  width="30" height="30"> 
+                </button>
+            </div>
+            <div class="col-12 col-md-6 col-lg-6 mb-3">
+                <div class="card">
+                    <img src="assets/img/home/gestionar-items.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Gestionar Items de la Compra</h5>
+                        <p class="card-text">Módulo encargado de crear, actualizar, eliminar y listar los Items de
+                            compra de DNA Crystal.</p>
+                        <a id="font" href="/itemsCompra" class="btn btn-primary">Gestionar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-6 mb-3">
+                <div class="card">
+                    <img src="assets/img/home/gestionar-compras.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Gestionar Compras</h5>
+                        <p class="card-text">Módulo encargado de crear, actualizar, eliminar y listar las Compras de DNA
+                            Crystal.</p>
+                        <a id="font" href="/compra" class="btn btn-primary">Gestionar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 mb-3">
+                <div class="card">
+                    <img src="assets/img/home/gestionar-clientes.jpg" class="card-img-top" width="30" height="30">
+                    <div class="card-body">
+                        <h5 class="card-title">Gestionar Clientes</h5>
+                        <p class="card-text">Módulo encargado de crear, actualizar, eliminar y listar las Clientes
+                            Registrados en la app.</p>
+                        <a id="font" href="/cliente" class="btn btn-primary">Gestionar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<router-outlet></router-outlet>

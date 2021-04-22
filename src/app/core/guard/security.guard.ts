@@ -6,8 +6,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SecurityGuard implements CanActivate {
+
+  constructor() { }
+
   canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
+    return false;
   }
 
 }

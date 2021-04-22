@@ -10,7 +10,6 @@ export class ProductoPage {
     async clickBotonCrearProductos() {
         await this.linkCrearProducto.click();
     }
-    
 
     async clickBotonListarProductos() {
         await this.linkListarProductos.click();

@@ -14,8 +14,23 @@
       "@home/*": [
         "src/app/feature/home/*"
       ],
-      "@producto/*": [
-        "src/app/feature/producto/*"
+      "@itemsCompra/*": [
+        "src/app/feature/itemsCompra/*"
+      ],
+      "@cliente/*": [
+        "src/app/feature/cliente/*"
+      ],
+      "@compra/*": [
+        "src/app/feature/compra/*"
+      ],
+      "@parametro/*": [
+        "src/app/feature/parametro/*"
+      ],
+      "@administracion/*": [
+        "src/app/feature/administracion/*"
+      ],
+      "@login/*": [
+        "src/app/feature/login/*"
       ],
       "@shared/*": [
         "src/app/shared/*"
