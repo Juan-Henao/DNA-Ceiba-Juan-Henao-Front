@@ -47,7 +47,7 @@
                                 <td>{{itemsCompra.valor}}</td>
                                 <td>{{itemsCompra.fechaCreacion | date:"MMM d, y"}}</td>
                                 <td>
-                                    <button type="button" name="editar" class="btn btn-primary btn-sm"
+                                    <button id="editarItemsCompra" type="button" name="editar" class="btn btn-primary btn-sm"
                                         [routerLink]="['/itemsCompra/gestionar', itemsCompra.id]">Editar</button>
                                 </td>
                                 <td>

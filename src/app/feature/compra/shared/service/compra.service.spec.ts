@@ -11,7 +11,7 @@ describe('CompraService', () => {
   let httpMock: HttpTestingController;
   let service: CompraService;
 
-  const apiEndpointPaciente = `${environment.endpoint}/compra`;
+  const apiEndpointCompra = `${environment.endpoint}/compra`;
 
   beforeEach(() => {
     const injector = TestBed.configureTestingModule({
@@ -23,51 +23,51 @@ describe('CompraService', () => {
   });
 
   it('should be created', () => {
-    const pacienteService: CompraService = TestBed.inject(CompraService);
-    expect(pacienteService).toBeTruthy();
+    const clienteService: CompraService = TestBed.inject(CompraService);
+    expect(clienteService).toBeTruthy();
   });
 
   it('deberia crear un compra', () => {
-    const dummyPaciente = new Compra();
-    service.guardar(dummyPaciente).subscribe((respuesta) => {
+    const dummyCompra = new Compra();
+    service.guardar(dummyCompra).subscribe((respuesta) => {
       expect(respuesta).toEqual(true);
     });
-    const req = httpMock.expectOne(apiEndpointPaciente);
+    const req = httpMock.expectOne(apiEndpointCompra);
     expect(req.request.method).toBe('POST');
     req.event(new HttpResponse<boolean>({body: true}));
   });
 
   it('deberia actualizar un compra', () => {
-    const dummyPaciente = new Compra();
-    dummyPaciente.id = 1;
-    service.actualizar(dummyPaciente).subscribe((respuesta) => {
-      expect(respuesta).toEqual(dummyPaciente);
+    const dummyCompra = new Compra();
+    dummyCompra.id = 1;
+    service.actualizar(dummyCompra).subscribe((respuesta) => {
+      expect(respuesta).toEqual(dummyCompra);
     });
-    const req = httpMock.expectOne(`${apiEndpointPaciente}/1`);
+    const req = httpMock.expectOne(`${apiEndpointCompra}/1`);
     expect(req.request.method).toBe('PUT');
-    req.flush(dummyPaciente);
+    req.flush(dummyCompra);
   });
 
   it('deberia eliminar un compra', () => {
-    const dummyPaciente = new Compra();
-    dummyPaciente.id = 1;
-    service.eliminar(dummyPaciente).subscribe((respuesta) => {
+    const dummyCompra = new Compra();
+    dummyCompra.id = 1;
+    service.eliminar(dummyCompra).subscribe((respuesta) => {
       expect(respuesta).toEqual(true);
     });
-    const req = httpMock.expectOne(`${apiEndpointPaciente}/1`);
+    const req = httpMock.expectOne(`${apiEndpointCompra}/1`);
     expect(req.request.method).toBe('DELETE');
     req.event(new HttpResponse<boolean>({body: true}));
   });
 
-  it('deberia listar pacientes', () => {
+  it('deberia listar compras', () => {
     const dummyCompras = [
       new Compra(), new Compra()
     ];
-    service.consultar().subscribe(pacientes => {
-      expect(pacientes.length).toBe(2);
-      expect(pacientes).toEqual(dummyCompras);
+    service.consultar().subscribe(compras => {
+      expect(compras.length).toBe(2);
+      expect(compras).toEqual(dummyCompras);
     });
-    const req = httpMock.expectOne(apiEndpointPaciente);
+    const req = httpMock.expectOne(apiEndpointCompra);
     expect(req.request.method).toBe('GET');
     req.flush(dummyCompras);
   });
@@ -78,7 +78,7 @@ describe('CompraService', () => {
     service.consultarPorId(dummyCompras.id).subscribe(respuesta => {
       expect(respuesta).toEqual(dummyCompras);
     });
-    const req = httpMock.expectOne(`${apiEndpointPaciente}/1`);
+    const req = httpMock.expectOne(`${apiEndpointCompra}/1`);
     expect(req.request.method).toBe('GET');
     req.flush(dummyCompras);
   });

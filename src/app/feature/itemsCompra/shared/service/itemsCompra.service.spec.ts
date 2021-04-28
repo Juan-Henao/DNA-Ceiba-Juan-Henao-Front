@@ -34,6 +34,9 @@ describe('ItemsCompraService', () => {
       expect(itemsCompra.length).toBe(2);
       expect(itemsCompra).toEqual(dummyItemsCompra);
     });
+    const req = httpMock.expectOne(apiEndpointProductos);
+    expect(req.request.method).toBe('GET');
+    req.flush(dummyItemsCompra);
   });
 
   it('deberia crear un itemCompra', () => {

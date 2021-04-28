@@ -3,7 +3,7 @@
         <div class="col-12 mb-3">
             <div class="my-3 row">
                 <div class="col-12 col-md-10 col-lg-11 text-center">
-                    <button type="button" name="crear" [routerLink]="['/compra/gestionar']"
+                    <button id="btn-crearCompra" type="button" name="crear" [routerLink]="['/compra/gestionar']"
                         class="btn btn-primary btn-lg">Crear compra</button>
                 </div>
                 <div class="col-12 col-md-2 col-lg-1 text-right">
@@ -47,7 +47,7 @@
                                 <td>{{compra.estadoCompra}}</td>
 
                                 <td>
-                                    <button type="button" name="editar" class="btn btn-primary btn-sm"
+                                    <button id = "editarCompra"type="button" name="editar" class="btn btn-primary btn-sm"
                                         [routerLink]="['/compra/gestionar', compra.id]">Editar</button>
                                 </td>
                                 <td>

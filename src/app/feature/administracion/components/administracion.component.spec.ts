@@ -11,14 +11,14 @@ describe('AdministracionComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdministracionComponent ],
+      declarations: [AdministracionComponent],
       imports: [
         CommonModule,
         HttpClientModule,
         RouterTestingModule
       ],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -30,4 +30,6 @@ describe('AdministracionComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
 });
